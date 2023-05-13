@@ -11,10 +11,11 @@ export class UserGetController {
    */
   @Get('')
   async getUser(
-    @Query('email') email: string,
+    @Query('nickname') nickname: string,
     @Query('userId') userId: string,
   ) {
-    if (email) return await this.userFindService.getUserByEmail({ email });
+    if (nickname)
+      return await this.userFindService.getUserByNickname({ nickname });
     return await this.userFindService.getUserById({ userId });
   }
 

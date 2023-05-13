@@ -18,12 +18,12 @@ export class UserFindService {
     @InjectModel(User.name) private readonly User: Model<User>,
   ) {}
 
-  /** 특정 유저를 이메일로 조회합니다. */
-  async getUserByEmail(param: {
-    email: string;
+  /** 특정 유저를 닉네임으로 조회합니다. */
+  async getUserByNickname(param: {
+    nickname: string;
     selectQuery?: Partial<Record<keyof User, boolean>>;
   }) {
-    return await this.User.findOne({ email: param.email })
+    return await this.User.findOne({ nickname: param.nickname })
       .select(param.selectQuery)
       .lean();
   }
