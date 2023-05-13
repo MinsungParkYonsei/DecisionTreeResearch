@@ -29,7 +29,7 @@ export class ProjectPostController {
     },
   ) {
     const project: Project = {
-      requesterId: userId,
+      authorId: userId,
       requiredSkills: body.requiredSkills,
       content: body.content,
       maxStack: body.maxStack,

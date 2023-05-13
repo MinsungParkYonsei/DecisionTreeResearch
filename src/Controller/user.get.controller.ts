@@ -10,7 +10,11 @@ export class UserGetController {
    * @author 현웅
    */
   @Get('')
-  async getUser(@Query('userId') userId: string) {
+  async getUser(
+    @Query('email') email: string,
+    @Query('userId') userId: string,
+  ) {
+    if (email) return await this.userFindService.getUserByEmail({ email });
     return await this.userFindService.getUserById({ userId });
   }
 

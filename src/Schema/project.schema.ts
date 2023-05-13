@@ -8,7 +8,7 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 @Schema()
 export class Project {
   @Prop({ required: true, index: true }) // 연결 요청자
-  requesterId: string;
+  authorId: string;
 
   @Prop({ required: true }) // 프로젝트에 필요한 인원 스펙
   requiredSkills: string[];

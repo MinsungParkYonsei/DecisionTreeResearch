@@ -22,15 +22,6 @@ export class Proposal {
   @Prop({ default: false }) // 요청 처리 여부 (전파, 요청 수락, 거절, 수락 거절)
   handled?: boolean;
 
-  @Prop() // 요청 수락 여부
-  accepted?: boolean;
-
-  @Prop() // 요청 수락에 대한 거절 여부
-  declined?: boolean;
-
-  @Prop() // 수락되었을 경우, 수락자가 추가하는 내용
-  content?: string;
-
   @Prop({ required: true }) // 최대 허용 전파 거리
   maxStack: number;
 

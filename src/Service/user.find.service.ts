@@ -18,6 +18,16 @@ export class UserFindService {
     @InjectModel(User.name) private readonly User: Model<User>,
   ) {}
 
+  /** 특정 유저를 이메일로 조회합니다. */
+  async getUserByEmail(param: {
+    email: string;
+    selectQuery?: Partial<Record<keyof User, boolean>>;
+  }) {
+    return await this.User.findOne({ email: param.email })
+      .select(param.selectQuery)
+      .lean();
+  }
+
   /** 특정 유저를 _id 로 조회합니다. */
   async getUserById(param: {
     userId: string;
