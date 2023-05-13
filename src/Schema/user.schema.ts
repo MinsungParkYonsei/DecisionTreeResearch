@@ -9,8 +9,8 @@ export type UserDocument = HydratedDocument<User>;
  */
 @Schema()
 export class User {
-  @Prop({ unique: true, trim: true }) // 이메일 (소셜 로그인을 이용하는 경우, 존재하지 않을 수도 있음)
-  email: string;
+  @Prop({ unique: true, trim: true }) // 닉네임
+  nickname: string;
 
   @Prop({ required: true })
   planetType: string;
