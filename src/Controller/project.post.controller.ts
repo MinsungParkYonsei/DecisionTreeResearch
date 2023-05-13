@@ -2,6 +2,7 @@ import { Controller, Post, Query, Body } from '@nestjs/common';
 import { Project, Proposal } from 'src/Schema';
 import {
   UserFindService,
+  ProjectFindService,
   ProjectCreateService,
   ProjectUpdateService,
 } from 'src/Service';
@@ -10,6 +11,7 @@ import {
 export class ProjectPostController {
   constructor(
     private readonly userFindService: UserFindService,
+    private readonly projectFindService: ProjectFindService,
     private readonly projectCreateService: ProjectCreateService,
     private readonly projectUpdateService: ProjectUpdateService,
   ) {}
@@ -55,11 +57,16 @@ export class ProjectPostController {
     const users = await this.userFindService.getAdjacentUsers({
       userId,
     });
+    const project = await this.projectFindService.getProjectById({
+      projectId,
+      selectQuery: { requiredSkills: true },
+    });
 
     const proposals: Proposal[] = users.map((user) => {
       return {
         projectAuthorId: userId,
         projectId,
+        requiredSkills: project.requiredSkills,
         content: body.content,
         targetUserId: user._id.toString(),
         spreaderIds: [user._id.toString()],
@@ -94,6 +101,7 @@ export class ProjectPostController {
       return {
         projectAuthorId: userId,
         projectId: body.proposal.projectId,
+        requiredSkills: body.proposal.requiredSkills,
         targetUserId: user._id.toString(),
         spreaderIds: [...body.proposal.spreaderIds, user._id.toString()],
         maxStack: body.proposal.maxStack,

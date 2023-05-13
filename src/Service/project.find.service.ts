@@ -24,6 +24,19 @@ export class ProjectFindService {
    * 프로젝트를 원하는 조건으로 가져옵니다.
    * @author 현웅
    */
+  async getProjectById(param: {
+    projectId: string;
+    selectQuery?: Partial<Record<keyof ProjectDocument, boolean>>;
+  }) {
+    return await this.Project.findById(param.projectId)
+      .select(param.selectQuery)
+      .lean();
+  }
+
+  /**
+   * 프로젝트를 원하는 조건으로 가져옵니다.
+   * @author 현웅
+   */
   async getProjects(param: {
     filterQuery: FilterQuery<Project>;
     selectQuery?: Partial<Record<keyof ProjectDocument, boolean>>;

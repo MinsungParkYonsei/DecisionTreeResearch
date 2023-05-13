@@ -7,6 +7,6 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return 'release: 0748';
+    return 'release: 0804';
   }
 }
