@@ -15,9 +15,6 @@ export class User {
   @Prop({ unique: true, required: true })
   planetCode: string;
 
-  @Prop({ unique: true, trim: true }) // 닉네임
-  nickname: string;
-
   @Prop({ required: true }) // 회원가입 일자
   createdAt: string;
 }

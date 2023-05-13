@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
   ProjectGetController,
+  ProjectPatchController,
   ProjectPostController,
   UserGetController,
   UserPostController,
@@ -9,6 +10,7 @@ import {
 import {
   ProjectCreateService,
   ProjectFindService,
+  ProjectUpdateService,
   UserCreateService,
   UserFindService,
 } from 'src/Service';
@@ -28,6 +30,7 @@ import {
 @Module({
   controllers: [
     ProjectGetController,
+    ProjectPatchController,
     ProjectPostController,
     UserGetController,
     UserPostController,
@@ -35,6 +38,7 @@ import {
   providers: [
     ProjectCreateService,
     ProjectFindService,
+    ProjectUpdateService,
     UserCreateService,
     UserFindService,
   ],

@@ -13,11 +13,11 @@ export class Connection {
   @Prop({ required: true }) // 연결 수락자
   accepterId: string;
 
-  @Prop({ required: true }) // 연결 성립 여부
-  accepted: string;
-
   @Prop({ required: true }) // 연결 (요청) 일자
   createdAt: string;
+
+  @Prop({ default: false }) // 연결 성립 여부
+  accepted?: boolean;
 }
 
 export const ConnectionSchema = SchemaFactory.createForClass(Connection);

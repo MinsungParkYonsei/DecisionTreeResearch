@@ -16,8 +16,8 @@ export class Acceptance {
   @Prop() // 수락 내용
   content?: string;
 
-  @Prop({ default: false }) // 프로젝트 진행자로부터의 최종 수락 여부
-  accepted: boolean;
+  @Prop() // 프로젝트 진행자로부터의 최종 수락 여부
+  accepted?: boolean;
 }
 
 export const AcceptanceSchema = SchemaFactory.createForClass(Acceptance);
