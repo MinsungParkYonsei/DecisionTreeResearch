@@ -12,8 +12,11 @@ export class User {
   @Prop({ unique: true, trim: true }) // 닉네임
   nickname: string;
 
-  @Prop({ required: true })
-  planetType: string;
+  @Prop({ required: true }) // 직업
+  job: string;
+
+  @Prop({})
+  planetType?: string;
 
   @Prop({ unique: true, required: true })
   planetCode: string;

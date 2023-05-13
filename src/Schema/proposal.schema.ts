@@ -20,7 +20,7 @@ export class Proposal {
   targetUserId: string;
 
   @Prop({ type: [String] }) // 프로젝트에 필요한 스킬들
-  requiredSkills: string[];
+  requiredJobs: string[];
 
   @Prop({ default: false }) // 요청 처리 여부 (전파, 요청 수락, 거절, 수락 거절)
   handled?: boolean;

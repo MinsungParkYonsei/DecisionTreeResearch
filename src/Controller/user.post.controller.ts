@@ -14,7 +14,7 @@ export class UserPostController {
    * @author 현웅
    */
   @Post('')
-  async createUser(@Body() body: { nickname: string; planetType: string }) {
+  async createUser(@Body() body: { nickname: string; job: string }) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let planetCode = '';
     for (let i = 0; i < 8; i++) {
@@ -25,7 +25,7 @@ export class UserPostController {
 
     const user: User = {
       nickname: body.nickname,
-      planetType: body.planetType,
+      job: body.job,
       planetCode,
       createdAt: new Date().toISOString(),
     };

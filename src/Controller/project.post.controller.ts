@@ -25,14 +25,14 @@ export class ProjectPostController {
     @Query('userId') userId: string,
     @Body()
     body: {
-      requiredSkills: string[];
+      requiredJobs: string[];
       content: string;
       maxStack: number;
     },
   ) {
     const project: Project = {
       authorId: userId,
-      requiredSkills: body.requiredSkills,
+      requiredJobs: body.requiredJobs,
       content: body.content,
       maxStack: body.maxStack,
     };
@@ -59,14 +59,14 @@ export class ProjectPostController {
     });
     const project = await this.projectFindService.getProjectById({
       projectId,
-      selectQuery: { requiredSkills: true },
+      selectQuery: { requiredJobs: true },
     });
 
     const proposals: Proposal[] = users.map((user) => {
       return {
         projectAuthorId: userId,
         projectId,
-        requiredSkills: project.requiredSkills,
+        requiredJobs: project.requiredJobs,
         content: body.content,
         targetUserId: user._id.toString(),
         spreaderIds: [user._id.toString()],
@@ -101,7 +101,7 @@ export class ProjectPostController {
       return {
         projectAuthorId: userId,
         projectId: body.proposal.projectId,
-        requiredSkills: body.proposal.requiredSkills,
+        requiredJobs: body.proposal.requiredJobs,
         targetUserId: user._id.toString(),
         spreaderIds: [...body.proposal.spreaderIds, user._id.toString()],
         maxStack: body.proposal.maxStack,

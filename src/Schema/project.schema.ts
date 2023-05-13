@@ -11,7 +11,7 @@ export class Project {
   authorId: string;
 
   @Prop({ required: true }) // 프로젝트에 필요한 인원 스펙
-  requiredSkills: string[];
+  requiredJobs: string[];
 
   @Prop({ required: true }) // 프로젝트 요청 내용
   content: string;
